@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 LABEL maintainer John Hughes <johughes@tesla.com>
 
 RUN apt-get update && apt-get -y --no-install-recommends install \
-    ca-certificates curl \
+    ca-certificates curl sudo \
+    && echo "user ALL= NOPASSWD: ALL\n" >> /etc/sudoers \
     && apt-get clean && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/* \
               /tmp/* \
